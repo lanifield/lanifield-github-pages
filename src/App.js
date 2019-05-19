@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import lime from '@material-ui/core/colors/lime';
+import yellow from '@material-ui/core/colors/yellow';
+import Layout from './containers/Layout';
+
+const theme = createMuiTheme({
+  palette: {
+    type: 'dark',
+    primary: lime,
+    accent: yellow,
+  },
+  overrides: {
+    MuiBottomNavigationAction: {
+      label: {
+        fontFamily: 'Roboto',
+        fontWeight: '500',
+        letterSpacing: '0.0715em',
+        textTransform: 'uppercase',
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MuiThemeProvider theme={theme}>
+      <Layout />
+    </MuiThemeProvider>
   );
 }
 
